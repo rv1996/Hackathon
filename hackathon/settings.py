@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'portal',
 
     # Third Party Apps
+    'crispy_forms'
 
 ]
 
@@ -117,6 +118,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 # Static files (CSS, JavaScript, Images)
