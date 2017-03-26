@@ -1,16 +1,12 @@
 {% extends "portal/base.html" %}
 
 {% block member_dashboard %}
-<div class="container">
 
-    <h2>{{ request.user }}</h2>
-
-    <form action="" method="post">
-        {% load crispy_forms_tags %}
-
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Ask Question">
-    </form>
-</div>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6"> <a href="{% url 'member_question' %}">Ask a question</a></div>
+            <div class="col-sm-6"><a href="{% url 'member_history' %}" > View History</a></div>
+        </div>
+    </div>
 {% endblock %}
+

@@ -32,7 +32,7 @@ class QuestionFor(models.Model):
     answer = models.TextField(null=True)
 
     def __str__(self):
-        return "{} | {} ".format(self.asked_by.username,self.asked_to.department_name)
+        return "{} | {} ".format(self.question.asked_by.username,self.asked_to.department_name)
 
 class Recommendation(models.Model):
 

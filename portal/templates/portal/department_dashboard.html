@@ -2,6 +2,15 @@
 
 {% block department_dashboard %}
     <div class="container">
-        <h2>Bitch Please</h2>
+        <div class="row">
+            <div>
+                <a href="{% url 'department_view_question' %}">You can view the question asked by you to you</a>
+            </div>
+
+            <div>
+                <a href="">see your collaborative request</a>
+            </div>
+
+        </div>
     </div>
 {% endblock %}

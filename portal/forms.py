@@ -35,7 +35,7 @@ def department_choice():
     return DEPARTMENT
 
 
-class Question(forms.Form):
+class QuestionForm(forms.Form):
     Question = forms.CharField(widget=forms.Textarea)
     type = forms.ChoiceField(choices=(('starred', 'starred'), ('unstarred', 'unstarred')),
                              label="Select the Type of question?", required=True)

@@ -3,14 +3,11 @@
 {% block body %}
     {% load crispy_forms_tags %}
     <div class="container">
-        <div class="container">
-            <form method="POST" action="">
-
-                {% csrf_token %}
-
-                {{ form|crispy }}
-                <input type="submit" value="Login"/>
-            </form>
+        <div class="jumbotron">
+            <div class="row">
+                <a href="{% url 'member_login' %}">Login as a member</a>
+                <a href="{% url 'department_login' %}">Login as a Department</a>
+            </div>
         </div>
     </div>
 {% endblock %}

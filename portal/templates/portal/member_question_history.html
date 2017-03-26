@@ -1,0 +1,9 @@
+{% extends 'portal/base.html' %}
+
+{% block member_dashboard %}
+    <div class="row">
+        {% for q in question %}
+            {{ q.text }}<br>
+        {% endfor %}
+    </div>
+{% endblock %}

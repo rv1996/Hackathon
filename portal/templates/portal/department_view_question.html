@@ -1,0 +1,12 @@
+{% extends "portal/base.html" %}
+
+{% block department_dashboard %}
+    <div class="container">
+        <h2>Question asked to you :</h2>
+        <div class="row">
+        {% for q in question %}
+            <div> {{ q.question.text }} asked by : {{ q.question.asked_by }} type: {{ q.question.type }} : deadline : {{ q.question.deadline }} asked on : {{ q.question.timestamp|timesince }}</div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
