@@ -5,7 +5,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Question Asked in past</div>
                 {% for q in question %}
-                    <div class="panel-body">{{ forloop.counter }}. {{ q.text }} | {{ q.timestamp|timesince }} </div>
+                    <a href="{% url 'member_history' %}{{ q.id }}/view/"><div class="panel-body">{{ forloop.counter }}. {{ q.text }} | {{ q.timestamp|timesince }} | {{ q.questionfor_set.answer }} </div></a>
                 {% endfor %}
             </div>
 

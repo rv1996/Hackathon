@@ -1,0 +1,12 @@
+{% extends 'portal/base.html' %}
+
+{% block body %}
+    {% for a in answered_question %}
+        {% if a.answer %}
+            <div> {{ a.answer }}</div>
+        {% else %}
+            <div> Not yet answered </div>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}

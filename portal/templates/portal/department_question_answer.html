@@ -9,6 +9,7 @@
                 <h4> Subject : {{ question.subject }}</h4>
                 <h4> Question : {{ question.text }}</h4>
                 <h4> Type : {{ question.type }}</h4>
+                <a href="{% url 'department_view_question' %}{{ question.id }}/recommend/" class="btn btn-success">Recommend this question</a>
             </div>
             <div class="col-sm-6">
                 <form method="POST" action="">

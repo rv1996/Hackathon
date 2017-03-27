@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'portal/base.html' %}
 
-</body>
-</html>
+{% block body %}
+    <div class="container">
+        <h3>{{ request.user }}</h3>
+        <div class="container">
+            <h4> Subject : {{ question.subject }}</h4>
+            <h4> Question : {{ question.text }}</h4>
+            <h4> Type : {{ question.type }}</h4>
+        </div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group" id="form_choice">
+                <label for="sel1">Select Department (select one):</label>
+                <select class="form-control" id="dept" name="recommend">
+                    {% for dept in recommend %}
+                        <option value="{{ dept.user }}">{{ dept }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <input type="submit" class="btn btn-success" value="Take help of these departments">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="btn btn-success" id="add_department" value="Add more department">
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

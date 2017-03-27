@@ -65,7 +65,8 @@
         {#                                <img src="{% static 'img/par.png' %}" class="img img-responsive" style="height:10%">#}
         {#                            </div>#}
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'logout' %}">{% if request.user.is_authenticated %}logout{% else %}{% endif %}</a>
+            <li><a href="{% url 'logout' %}">
+                {% if request.user.is_authenticated %}{{ request.user }} | logout{% else %}{% endif %}</a>
             </li>
         </ul>
 
@@ -101,6 +102,7 @@
 
 {# javascript files #}
 
+<script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'plugins/jquery/jquery-2.1.4.min.js' %}"></script>
 <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
 <script src="{% static 'plugins/pace-master/pace.min.js' %}"></script>
