@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^member_history/$',member_history,name="member_history"),
     url(r'^department_dashboard/$',department_dashboard,name="department_dashboard"),
     url(r'^department_view_question/$',department_question,name="department_view_question"),
+    url(r'^department_view_question/(?P<pk>\d+)/answer/$',department_question_answer,name="department_answer_question"),
     url(r'^department_collaboration/$',department_collaboration,name="department_collaboration"),
     url(r'^logout/$',logout,name="logout"),
 

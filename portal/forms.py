@@ -34,6 +34,13 @@ def department_choice():
     print(DEPARTMENT)
     return DEPARTMENT
 
+class AnswerForm(forms.Form):
+    answer = forms.CharField(widget=forms.Textarea,required=True)
+
+
+
+
+
 
 class QuestionForm(forms.Form):
     Question = forms.CharField(widget=forms.Textarea)

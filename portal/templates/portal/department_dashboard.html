@@ -3,14 +3,75 @@
 {% block department_dashboard %}
     <div class="container">
         <div class="row">
-            <div>
-                <a href="{% url 'department_view_question' %}">You can view the question asked by you to you</a>
-            </div>
 
-            <div>
-                <a href="">see your collaborative request</a>
-            </div>
+            <div class="page-inner">
+                <div class="page-breadcrumb">
+                    <ol class="breadcrumb container">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </div>
+                <div class="page-title">
+                    <div class="container">
+                        <h3>Dashboard : {{ request.user }} </h3>
+                    </div>
+                </div>
+                <div id="main-wrapper" class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-white">
+                                <div class="panel-heading clearfix">
+                                    <h4 class="panel-title" style="font-size:150%">View Questions</h4>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-5 col-md-offset-1">
+                                        <div class="panel panel-white">
+                                            <div class="panel-heading clearfix">
+                                                <h4 class="panel-title" style="font-size:120%">Questions to
+                                                    Collaborate</h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <p>Some default panel content here. Nulla vitae elit libero, a pharetra
+                                                    augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo
+                                                    quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+                                                    Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                                <a href="minview.html">
+                                                    <a href=""><div type="button"
+                                                            class="btn btn-success col-md-4 col-md-offset-4">View
+                                                    </div></a>
+                                                </a>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="panel panel-white">
+                                            <div class="panel-heading clearfix">
+                                                <h4 class="panel-title" style="font-size:120%">Questions asked by
+                                                    MPs</h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <p>Some default panel content here. Nulla vitae elit libero, a pharetra
+                                                    augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo
+                                                    quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+                                                    Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                                <a href="minview.html">
+                                                    <a href="{% url 'department_view_question' %}"><div type="button"
+                                                            class="btn btn-success col-md-4 col-md-offset-4">View
+                                                    </div></a>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               </div>
         </div>
-    </div>
 {% endblock %}

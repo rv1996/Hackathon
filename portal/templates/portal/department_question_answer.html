@@ -1,0 +1,23 @@
+{% extends 'portal/base.html' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+             <h4>{{ title }}</h4>
+            <div class="container">
+                <h4> Subject : {{ question.subject }}</h4>
+                <h4> Question : {{ question.text }}</h4>
+                <h4> Type : {{ question.type }}</h4>
+            </div>
+            <div class="col-sm-6">
+                <form method="POST" action="">
+                    {% load crispy_forms_tags %}
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-success" value="Submit Answer"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

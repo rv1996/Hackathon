@@ -3,14 +3,21 @@
 {% block body %}
     {% load crispy_forms_tags %}
     <div class="container">
+
         <div class="container">
-            <form method="POST" action="">
 
-                {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="container"><label><h2>{{ title }}</h2></label></div>
+                    <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-success" value="Login"/>
+                </form>
 
-                {{ form|crispy }}
-                <input type="submit" value="Login"/>
-            </form>
+                </div>
+
+            </div>
         </div>
     </div>
 {% endblock %}

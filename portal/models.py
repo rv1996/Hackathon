@@ -22,6 +22,11 @@ class Question(models.Model):
     deadline = models.DateField() # default is gonna be 3 days
     asked_by = models.ForeignKey(User)
 
+
+
+    def deadline_check(self):
+        pass
+
     def __str__(self):
         return  self.subject
 
