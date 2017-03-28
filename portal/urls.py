@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from .views import *
+from .ajax import *
 
 urlpatterns = [
 
@@ -14,6 +15,8 @@ urlpatterns = [
     url(r'^department_view_question/$',department_question,name="department_view_question"),
     url(r'^department_view_question/(?P<pk>\d+)/answer/$',department_question_answer,name="department_answer_question"),
     url(r'^department_view_question/(?P<pk>\d+)/recommend/$',department_recommend,name="department_recommend"),
+    url(r'^department_view_question/(?P<pk>\d+)/recommend/recommendation/$',nltk_recommend,name="nltk_recommend"),
+
     url(r'^department_collaboration/$',department_collaboration,name="department_collaboration"),
     url(r'^logout/$',logout,name="logout"),
 

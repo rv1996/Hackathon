@@ -20,9 +20,18 @@
     <link href="{% static 'plugins/switchery/switchery.min.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'plugins/3d-bold-navigation/css/style.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'plugins/slidepushmenus/css/component.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'plugins/datatables/css/jquery.datatables.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'plugins/datatables/css/jquery.datatables_themeroller.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" type="text/css"/>
+
     <link href="{% static 'plugins/weather-icons-master/css/weather-icons.min.css' %}" rel="stylesheet"
           type="text/css"/>
     <link href="{% static 'plugins/metrojs/MetroJs.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'plugins/select2/css/select2.css' %}" rel="stylesheet" type="text/css"/>
+
     <link href="{% static 'plugins/toastr/toastr.min.css' %}" rel="stylesheet" type="text/css"/>
 
     <!-- Theme Styles -->
@@ -48,49 +57,50 @@
 
 </head>
 <body style="background-color: white">
-<div class="navbar">
-    <div class="navbar-inner">
-        <div class="sidebar-pusher">
-            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-        <div class="logo-box">
-            <img src="{% static 'img/emb.png' %}" style="height:120%">
-        </div>
-        <div class="logo-box">
-            <div class="logo-text"><span>Ministry Online Portal</span></div>
-        </div>
-        {#                            <div class="logo-central">#}
-        {#                                <img src="{% static 'img/par.png' %}" class="img img-responsive" style="height:10%">#}
-        {#                            </div>#}
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'logout' %}">
-                {% if request.user.is_authenticated %}{{ request.user }} | logout{% else %}{% endif %}</a>
-            </li>
-        </ul>
 
-        <!-- Top Menu -->
+{% block navbar %}
+    <div class="navbar" style="padding: 10px;">
+        <div class="navbar-inner">
+            <div class="sidebar-pusher">
+                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="logo-box">
+                <img src="{% static 'img/emb.png' %}" style="height:120%">
+            </div>
+            <div class="logo-box">
+                <a href="#" class="logo-text"><span>Ministry Online Portal</span></a>
+            </div>
+            <div class="logo-central">
+                <img src="{% static 'img/par.png' %}" style="height:110%">
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'logout' %}">
+                    {% if request.user.is_authenticated %}{{ request.user }} | logout{% else %}{% endif %}</a>
+                </li>
+            </ul>
+
+        </div>
+
     </div>
 
-</div>
+{% endblock %}
 
 
-<div class="container">
-    {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <div class="alert alert-success alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-    {% block body %}{% endblock %}
-    {% block member_dashboard %}{% endblock %}
-    {% block department_dashboard %}{% endblock %}
-</div>
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% block body %}{% endblock %}
+{% block member_dashboard %}{% endblock %}
+{% block department_dashboard %}{% endblock %}
 
 
 <footer>
@@ -116,6 +126,13 @@
 <script src="{% static 'plugins/3d-bold-navigation/js/main.js' %}"></script>
 <script src="{% static 'js/modern.js' %}"></script>
 <script src="{% static 'js/pages/form-select2.js' %}"></script>
+<script src="{% static 'plugins/jquery-mockjax-master/jquery.mockjax.js' %}"></script>
+<script src="{% static 'plugins/moment/moment.js' %}"></script>
+<script src="{% static 'plugins/datatables/js/jquery.datatables.min.js' %}"></script>
+<script src="{% static 'plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/pages/table-data.js' %}"></script>
+<script src="{% static 'plugins/select2/js/select2.min.js' %}"></script>
 
 
 </body>

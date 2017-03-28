@@ -1,9 +1,18 @@
 {% extends "portal/base.html" %}
 
 {% block member_dashboard %}
+    <div class="page-breadcrumb">
+        <ol class="breadcrumb container">
+            <li><a href="index-2.html">Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </div>
+    <div class="page-title">
+        <div class="container">
+            <h3>Dashboard : {{ request.user }}</h3>
+        </div>
+    </div>
     <div class="container">
-
-        <h2>{{ request.user }}</h2>
 
         <div id="main-wrapper" class="container">
             <div class="row">
@@ -27,7 +36,6 @@
             </div>
             <!-- Row -->
         </div>
-
 
 
     </div>

@@ -1,24 +1,67 @@
 {% extends 'portal/base.html' %}
 
 
-{% block body %}
-    <div class="container">
-        <div class="row">
-             <h4>{{ title }}</h4>
-            <div class="container">
-                <h4> Subject : {{ question.subject }}</h4>
-                <h4> Question : {{ question.text }}</h4>
-                <h4> Type : {{ question.type }}</h4>
-                <a href="{% url 'department_view_question' %}{{ question.id }}/recommend/" class="btn btn-success">Recommend this question</a>
-            </div>
-            <div class="col-sm-6">
-                <form method="POST" action="">
-                    {% load crispy_forms_tags %}
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <input type="submit" class="btn btn-success" value="Submit Answer"/>
-                </form>
-            </div>
+{% block department_dashboard %}
+    <div class="page-breadcrumb">
+        <ol class="breadcrumb container">
+            <li><a href="index-2.html">Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </div>
+    <div class="page-title">
+        <div class="container">
+            <h3>Dashboard : {{ request.user }}</h3>
         </div>
     </div>
+
+    <div id="main-wrapper" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h4 class="panel-title">The <span id="invitee">MP</span> has adressed to you the following
+                            question, Create a Reply!</h4>
+                        <a style="float: right;margin-bottom: 10px;" href="{% url 'department_view_question' %}{{ question.id }}/recommend/" class="btn btn-success">Recommend this question</a>
+                    </div>
+
+
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <br/>
+                                <div class="panel panel-success">
+                                    <div class="panel-heading clearfix">
+                                        <h4 class="panel-title">Subject : {{ question.subject }}</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <p style="padding-top: 10px;">Question : {{ question.text }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                            <form method="POST" action="">
+                                {% load crispy_forms_tags %}
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <input type="submit" class="btn btn-success" value="Submit Answer"/>
+                            </form>
+                                </div>
+                        </div>
+                        <div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row -->
+    </div>
+
 {% endblock %}

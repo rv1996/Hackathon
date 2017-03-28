@@ -1,1 +1,9 @@
 /* Write your custom CSS here */
+.logo-central{
+	position: relative;
+    width: auto;
+    height: 60px;
+    margin-left: 23.5%;
+    float: left
+}
+

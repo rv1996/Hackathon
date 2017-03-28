@@ -49,7 +49,7 @@ class QuestionForm(forms.Form):
     subject = forms.CharField(max_length=500)
     deadline = forms.DateField(widget=forms.SelectDateWidget)
 
-    asking_to = forms.ChoiceField(choices=department_choice(), label="Whom you wanna ask the question ", required=True)
+    asking_to = forms.ChoiceField(choices=department_choice(), label="Select Ministry", required=True)
 
     # widgets = {'deadline': forms.DateInput(format='%d/%m/%Y')}
 

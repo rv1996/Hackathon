@@ -115,12 +115,9 @@ def member_question(request):
 def member_history(request):
     question = Question.objects.all().filter(asked_by=User.objects.get(username=request.user)).order_by('-timestamp')
 
-    question = QuestionFor.objects.all().filter()
-
-
     context = {
         'title': "Question asked by you",
-        'question': question
+        'question': question,
     }
     return render(request, "portal/member_question_history.html", context)
 
@@ -130,12 +127,22 @@ def member_question_view(request,pk):
 
     question = Question.objects.get(pk=pk)
 
-    answered_question = question.questionfor_set.all().filter(answer__isnull=False)
-    print(answered_question)
+    answer = QuestionFor.objects.get(question=question)
+
+    print(answer.answer)
+    print(answer.asked_to.department_name)
+
+
+    # print(answered_question)
+
 
     context = {
         'title':"View the answer response",
-        "answered_question":answered_question
+        # "answered_question":answered_question,
+        # "not_answered":not_answer,
+        'answer':answer,
+        "question":question,
+
     }
 
     return render(request,"portal/member_view_question.html",context)
@@ -181,9 +188,11 @@ def department_recommend(request, pk):
     question = Question.objects.get(pk=pk)
 
     departments = Department.objects.all().exclude(user=User.objects.get(username=request.user))
-    # update the filter query so that one department can only be recommended once only
 
-    print(request.POST.getlist('recommend'))
+
+    print(request.POST.getlist('select'))
+
+
     context = {
         "title":"Select which department you wanna recommend",
         "recommend":departments,
@@ -197,7 +206,7 @@ def department_collaboration(request):
     context = {
         'title': "Collaboraion Help"
     }
-    return render(request, "portal/department_view_collaboration.html", context)
+    return render(request, "portal/department_collaboration_view.html", context)
 
 
 def department_question(request):

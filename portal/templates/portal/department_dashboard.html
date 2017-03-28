@@ -1,7 +1,7 @@
 {% extends "portal/base.html" %}
 
 {% block department_dashboard %}
-    <div class="container">
+
         <div class="row">
 
             <div class="page-inner">
@@ -37,7 +37,7 @@
                                                     quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
                                                     Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                                                 <a href="minview.html">
-                                                    <a href=""><div type="button"
+                                                    <a href="{% url 'department_collaboration' %}"><div type="button"
                                                             class="btn btn-success col-md-4 col-md-offset-4">View
                                                     </div></a>
                                                 </a>
@@ -73,5 +73,5 @@
 
 
                </div>
-        </div>
+            </div>
 {% endblock %}

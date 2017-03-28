@@ -7,12 +7,18 @@ $(document).ready(function (event) {
 
     // code for adding more department in the recommendation  form of ministry
 
-    $('#add_department').click(function(event){
-        var text = $('#dept').html();
+    $('#recommend_button').click(function(event){
 
-        $('#form_choice').html(text);
-        console.log(text);
-        console.log("working");
+        $.ajax({
+            type:"GET",
+            url:"recommendation/",
+            success:function (data) {
+                console.log("working");
+                $('#recommend_response').html("<h3> you can take help of these department</h3>");
+
+            }
+
+        })
     });
 
 

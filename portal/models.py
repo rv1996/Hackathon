@@ -21,7 +21,7 @@ class Question(models.Model):
     timestamp = models.DateTimeField(auto_now=True,null=True)
     deadline = models.DateField() # default is gonna be 3 days
     asked_by = models.ForeignKey(User)
-
+    is_recommeded = models.BooleanField(default=False)
 
 
     def deadline_check(self):
