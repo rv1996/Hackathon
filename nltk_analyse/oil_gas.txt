@@ -1,0 +1,189 @@
+Oil and Gas Glossary
+Acreage
+Annulus
+Anticline
+Well
+Aquifier
+Azimuth
+Barrel
+Barrel of Oil Equivalent
+BOE
+BCF
+BsFe
+Cubic
+Bitumen
+Blow-out
+BOED
+Borehole
+Brine
+British Thermal Unit
+BTU
+Butane
+CAPEX
+Capital Expenditures
+Carbon Capture And Storage
+CCS
+Casing String
+Casing
+Cementing
+Christmas Tree
+Completion
+Compressor
+Condensates
+Conventional Resources
+Cracker
+Crude Oil
+Cubic Foot
+Cuttings
+Deviated
+Directional Drilling
+Drill
+Mud
+Fluid
+Dry Gas
+E&A
+E&P
+Enhanced Oil Recovery
+EOR
+Environmental Assessment
+Estimated Ultimate Recovery
+EUR
+Ethane
+Ethylene
+Exploration Drilling
+Exploration Phase
+Exploratory Well
+Farm-In
+Farm-Out
+Field
+Fishing
+Flaring
+Flowback Water
+Formation Pressure
+Formation
+Fossil Fuel
+Frac Plug
+Frag Stage
+Fracturing Fluid
+Fracturing
+Fugitive Emissions
+Gas Fields
+Gas
+Oil Ratio
+Gathering Lines
+GGE
+Global-Warming Potenial
+GPU
+Greenhouse Gas
+GHG
+Heavy Oil
+Hedging
+Held By Production
+High BTU Gas
+Wet Gas
+Horizontal Drilling
+Hydraulic fracturing fluids
+Hydraulic fracturing
+Hydrocarbon
+Hydrostatic Pressure
+Impoundment
+Injection-Well
+Inter-State Transmission
+Land Agent
+Land Man
+Lease
+LEL
+Lessee
+Lessor
+Life Cycle Analysis
+LCA
+Liquefied natural gas
+LNG
+MBBL
+MBOE
+MCF
+MCFe
+Mechanical Integrity Test
+MIT
+Meters
+Methane
+Midstream
+Mineral rights
+MMBBL
+Barrels
+Crude Oil
+Condensate
+Natural Gas
+Naturally Occurring Radioactive Materials
+Net Acres
+NYMEX
+NORM
+Oil 
+Gas
+Odorant
+Ethyl Mercaptan
+Oil Field
+Operator
+Payzone
+Permeability
+Petroleum
+Smart Pig
+Dumb Pig
+Pipeline
+Pooling
+Land Pooling
+Porosity
+Reserves
+Primary Recovery
+Probable Reserves
+Produced Water
+Production Well
+Propane
+Proppant
+Proven Field
+River Basin Commission
+Recompletion
+Recoverable reserves
+Recovery factor
+Reserves
+Reservoir
+Resources
+Rig Down
+Rig-Up
+Rate of Penetration
+Meters per Hour
+Roughneck
+Roustabout
+Royal Payment
+SCADA
+Seal Formation
+Secondary Recovery
+Shale Gas
+Shale Oil
+Shale
+Shut In Well
+Source Rock
+Spacing
+Spud-In
+Surface Location
+Surface Reclamation
+Total Depth
+Technically Recoverable Resources
+Tight Gas
+Trap
+Tophole
+Total Dissolved Solids
+TDS
+Total Vertical Depth
+Reservoirs
+Underground Injection Control Well
+Undiscovered
+Unproved Reservoirs
+Reserves
+Plugging
+Decommissioning
+Well log
+Wellbore
+Natural Gas Liquids
+Energy
+Pipework

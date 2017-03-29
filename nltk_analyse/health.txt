@@ -1,0 +1,435 @@
+Health
+Family
+Accountable Care Organization
+Accreditation
+Actuarial Value
+Adjusted Gross Income (AGI)
+Advance Premium Tax Credit (APTC)
+Affordable Care
+(ACA)
+Affordable coverage
+AgentAlimony
+Allowed Amount
+Annual Deductible Combined
+Annual Limit
+AppealApplication ID
+Attest/Attestation
+Authorized Representative
+Balance Billing
+Benefit Year
+Biosimilar Biological Products
+Drugs
+Bronze Health
+COBRA
+Cancelled Debts
+Capital Gains
+Care Coordination
+Catastrophic Health
+Centers for Medicare & Medicaid Services (CMS)
+Certified Application Counselor
+Children's Health Insurance Program (CHIP)
+Chronic Disease Management
+ClaimCo-opCoinsurance
+Community Rating
+Competitive Bidding
+Complication of Pregnancy
+Copayment
+Cost Sharing
+Cost Sharing Reduction (CSR)
+Creditable Coverage
+Data Matching Issue (Inconsistency)
+Deductible
+Dental Coverage
+Department of Health and Human Services (HHS)
+Dependent
+Dependent Coverage
+Disability
+Dividend
+Domestic Partnership
+Donut Hole 
+Medicare Prescription Drug
+Drug List
+Durable Medical Equipment (DME)
+Early and Periodic Screening 
+Diagnostic 
+Treatment Services EPSDT
+Eligibility Assessment
+Eligible Immigration Status
+Emergency Medical Condition
+Emergency Medical Transportation
+Emergency Room Care
+Emergency Services
+Employer Shared Responsibility Payment (ESRP)
+Employer Union Retiree
+Essential Health Benefits
+Excluded Services
+Exclusive Provider Organization 
+EPO
+Exemption Certificate Number (ECN)
+Family and Medical Leave Act (FMLA)
+Federal Poverty Level (FPL)
+Federally Qualified Health Center (FQHC)
+Federally Recognized Tribe 
+Fee For Service
+Flexible Benefits Plan
+Flexible Spending Account (FSA)
+Formulary
+Full-Time Employee (FTE)
+Fully Insured Job-based Plan
+Generic Drugs
+Gold Health Plan
+Grace Period
+Grandfathered
+Grandfathered Health Plan
+Group Health Plan
+HIPAA Eligible 
+Individual
+Habilitative/Habilitation Services
+Hardship Exemption
+Health Care Workforce Incentive
+Health Coverage
+Health Insurance
+Health Insurance Marketplace
+Health Maintenance Organization (HMO)
+Health Plan Categories
+Health Reimbursement Account (HRA)
+Health Savings Account (HSA)
+Health Status
+High Deductible Health Plan (HDHP)
+High-Cost Excise Tax
+High-Risk Pool Plan (State)
+Home Health Care
+Home and Community-Based Services (HCBS)
+Hospice Services
+Hospital Outpatient Care
+Hospital Readmissions
+Hospitalization
+Household
+In Person Assistance Personnel Program
+In-network Coinsurance
+In-network Copayment
+Inconsistency Data Matching Issue
+Individual Health Insurance Policy
+Inpatient Care
+Insurance Co-OpInterest
+Job-Based Health
+Large Group Health
+Lawfully Present
+Lifetime Limit
+Limited cost sharing
+Long-Term Care
+Marketplace
+Medicaid
+Medical Loss Ratio (MLR)
+Medical Underwriting
+Medically Necessary
+Medicare
+Medicare Advantage (Medicare Part C)
+Medicare Hospital Insurance Tax
+Medicare Part DMedicare Prescription Drug Donut Hole
+Member Survey Results
+Minimum Essential Coverage (MEC)
+Minimum value
+Modified Adjusted Gross Income (MAGI)
+Multi-Employer
+Multi-State
+Navigator
+Net Capital Gains
+Net Rental Income
+Obamacare
+Open Enrollment Period Original Medicare
+Out-of-Network Coinsurance
+Out-of-Network Copayment
+Out-of-Pocket Costs
+Out-of-Pocket Estimate
+Out-of-pocket maximum/limit
+Patient Protection and Affordable Care
+Patient-Centered Outcomes Research
+Payment Bundling
+PenaltyPension (Retirement Benefit)
+Physician Services
+Platinum Health
+Point of Service (POS)
+Policy Year
+Pre-Existing Condition
+Pre-Existing Condition (Job-based Coverage)
+Pre-Existing Condition Exclusion Period (Individual Policy)
+Pre-Existing Condition Exclusion Period (Job-based Coverage)
+Pre-existing Condition Insurance (PCIP)
+Preauthorization
+Preferred Provider
+Preferred Provider Organization (PPO)
+Premium
+Premium Tax Credit
+Prescription Drug Coverage
+Prescription Drugs
+Prevention
+Preventive Services
+Primary Care
+Primary Care Physician
+Primary Care Provider
+Prior Authorization
+Public Health
+Added Sugar
+Adipose tissue
+tissue
+Aerobic physical activity
+Bariatric Surgery
+Body Mass Index
+BMI
+Bone Strengthening Activity
+Calorie
+Calorie Balance
+Carbohydrate 
+Cholestrol
+Diabetes
+Diet
+Dietary Sodium
+Energy Expenditure
+Exercise
+Fat
+Flexibility
+Gastrointestinal Surgery
+Gestational Diabetes
+Glucose
+Healthy Weight
+Heart Disease
+High Blood Pressure
+High-Density Lipoprotein
+Hydrogenation
+Hypertension
+Insulin
+Lactose Intolerance
+Intolerance
+Lipoprotein
+Low Density Lipoprotein
+Macronutrient
+Metabolic Syndrome
+Metabolism
+Mononounsaturated fat
+Muscle-strengthening activity
+Nutrient Dense 
+Nutrition
+Obesity
+Oils
+Fats
+Fatty Acids
+Overweight
+Pancreas
+Physical Activity
+Polyunsaturated Fat
+Portion Size
+Protein
+Refined Grains
+Registered Dietition
+R.D.
+Saturated fat
+Serving size
+Sodium
+Solid fats
+Stroke
+Sugar-sweetened beverages
+Trans Fatty Acids
+Triglycerides
+Type-1 diabetes
+Type-2 diabetes
+Unsaturated Fat
+Very low calorie diet
+malnutrition
+Nutrition
+Vitamins
+Minerals
+Vitamin A
+Vitamin B
+Vitamin C
+Vitamin D
+Vitamin E
+Waist Circumference
+Weight Control
+Weight Cycling
+Whole grains
+Whole Wheat Grains
+Aesthetic
+Alienation
+Anarchism
+Anthropology
+Art
+Behaviour
+Bourgeois
+Bureaucracy
+Criticism
+Culture
+Democracy
+Determine
+Development
+Dialect Dialectic
+Doctrinaire
+Dramatic
+Ecology
+Capitalism
+Career
+Charity
+Community
+Consensus
+Consumer
+Conventional
+Country
+Creative
+Educated
+Elite
+Empirical
+Equality
+Ethnic
+Evolution
+Existential
+Experience
+Expert
+Exploitation
+Family
+Fiction Folk
+Formalist
+G 140
+Generation
+Genetic
+Genius
+Hegemony
+History
+Humanity
+Idealism
+Ideology
+Image
+Imperialism
+Industry
+Institution
+Intellectual
+Interest
+Isms
+Management
+Masses
+Materialism
+Mechanical
+Media
+Meditation
+Native
+Natural
+Organic
+Originality
+Racial1
+Rational
+Reactionary
+Realism
+Regional
+Representative
+Science
+Sensibility
+Sex
+Socialist
+Society
+Sociology
+Standards
+Status
+Structural
+Subjective
+Taste
+Technology
+Theory Tradition
+Unconscious
+Underprivileged
+Unemployment
+Utilitarian
+Wealth
+Welfare
+Labour
+Liberal
+Liberation
+Literature
+Peasant
+Personality
+Philosophy
+Popular
+Positivist
+Pragmatic
+Private
+Progressive
+Psychological
+Addiction
+Affair (marital)
+Assert, Assertion
+Awareness bubble
+Bio- (prefix)
+Blended (step)family
+Bond, Bonding
+Bottom
+Boundaries
+Break the cycle
+Character or Psyche
+Childhood
+Contraceptives
+Codependence
+Confrontation
+Co-parent
+Crisis
+Cycle
+Divorcing
+Depression
+Dual-role parent
+E(motion)-level
+Enabling
+Enmeshment
+Extended family
+Extended stepfamily
+Family functioning
+Family identity
+Family map (genogram)
+Grief (mourning)
+Grown Wounded Child (GWC)
+Grown Nurtured Child (GNC)
+Half brother / sister
+Healthy / toxic relationship
+Inner family (of subselves)
+Inner pain
+Marriage
+Maturity
+Nuclear family
+Nuclear stepfamily
+Nurturance level (family)
+Overwhelm
+Parent (noun)
+Parent, Parenting (verb)
+Personality
+Problem solving
+Recovery (from inner wounds)
+Spirituality
+Step- (prefix)
+Stepchild / son / daughter
+Stepfamily
+Stepfamily identity
+Stepparent
+Stress
+Trauma
+Swine Flu
+H1N1
+True and false selves
+Unawareness
+Values conflict
+Wholistic health
+Wounds (psychological)
+WHO
+medicine
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

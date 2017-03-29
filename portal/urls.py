@@ -16,9 +16,13 @@ urlpatterns = [
     url(r'^department_view_question/(?P<pk>\d+)/answer/$',department_question_answer,name="department_answer_question"),
     url(r'^department_view_question/(?P<pk>\d+)/recommend/$',department_recommend,name="department_recommend"),
     url(r'^department_view_question/(?P<pk>\d+)/recommend/recommendation/$',nltk_recommend,name="nltk_recommend"),
+    url(r'^department_view_collaborative_question/$',department_view_collaborated_question,name="department_view_collaborative_question"),
+    url(r'^department_view_collaborative_question/(?P<pk>\d+)/answer/$',department_view_collaborative_answer,name="department_view_collaborative_answer"),
 
     url(r'^department_collaboration/$',department_collaboration,name="department_collaboration"),
+    url(r'^department_collaboration/(?P<pk>\d+)/answer/$',department_collaboration_answer,name="department_collaboration_answer"),
     url(r'^logout/$',logout,name="logout"),
+
 
 
 

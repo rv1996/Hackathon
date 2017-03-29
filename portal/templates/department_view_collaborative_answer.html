@@ -1,0 +1,48 @@
+{% extends 'portal/base.html' %}
+
+{% block department_dashboard %}
+    <div id="main-wrapper" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">View Reply:</h3><!--heading-->
+                    </div>
+                    <br/>
+                    <h4>Question : {{ question.text }} </h4>
+                    {% for q in recommend_question %}
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading clearfix">
+                                            <p style="font-size: large;"> Asked TO : {{ q.to }}
+
+                                            </p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div>
+                                                <p>
+
+                                                    Answer :
+                                                    {% if q.recommended_answer %}
+                                                        {{ q.recommended_answer }}
+                                                    {% else %}
+                                                        Not Yet answered
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+
+{% endblock %}

@@ -5,7 +5,7 @@ from .forms import Member, QuestionForm, AnswerForm
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Question, Department, QuestionFor
+from .models import Question, Department, QuestionFor, Recommendation
 from django.contrib.auth.decorators import login_required
 
 
@@ -106,6 +106,8 @@ def member_question(request):
             question = Question.objects.create(text=question, type=type, asked_by=user, deadline=deadline,
                                                subject=subject)
             questionfor = question.questionfor_set.create(asked_to=department)
+            question.save()
+            questionfor.save()
             messages.success(request, "Thank you for your time, The department will reply as soon as possible")
             return redirect(reverse('member_dashboard'))
 
@@ -187,10 +189,50 @@ def department_recommend(request, pk):
 
     question = Question.objects.get(pk=pk)
 
+
     departments = Department.objects.all().exclude(user=User.objects.get(username=request.user))
+
+    current_department = Department.objects.get(user=User.objects.get(username=request.user))
+
+
 
 
     print(request.POST.getlist('select'))
+
+    recommend_list = request.POST.getlist('select')
+
+    print(request.user)
+    print("------")
+    dept = User.objects.get(username=request.user)
+
+
+
+    print(dept)
+
+
+
+    # recommend_object_list = []
+    for d in recommend_list:
+        current_department.recommended_by_me.create(to=Department.objects.get(user=User.objects.get(username=d)),question=question)
+        messages.success(request,"Recommendation request has been send you'll be notified  as the ministry reply the answer")
+        return HttpResponseRedirect(reverse('department_dashboard'))
+        # dept_recommend = Department(user=User.objects.get(username=d))
+        # dept_recommend.save()
+        # question.recommendation_set.create(to=dept_recommend,by=Department.objects.get(user=dept))
+        # dept_user.recommended_by_me = dept_user
+        # dept_user.recommended_to_me = Department.objects.get(user=User.objects.get(username=d))
+
+
+
+
+
+        #
+        # recommend = Recommendation.objects.create(question=question,by = dept_user,to = dept_recommend )
+        # recommend.save()
+        # recommend_object_list.append(recommend)
+
+
+    # print(recommend_object_list)
 
 
     context = {
@@ -203,19 +245,83 @@ def department_recommend(request, pk):
 
 
 def department_collaboration(request):
+
+    current_dept = Department.objects.get(user=User.objects.get(username=request.user))
+    recommendation = current_dept.recommended_to_me.all()
+
     context = {
-        'title': "Collaboraion Help"
+        'title': "Collaboraion Help",
+        'recommendation':recommendation,
     }
     return render(request, "portal/department_collaboration_view.html", context)
 
+
+
+
+def department_collaboration_answer(request,pk):
+    question = Question.objects.get(pk=pk)
+
+    current_dept = Department.objects.get(user=User.objects.get(username=request.user))
+    form = AnswerForm(request.POST or None)
+    context = {
+        'title':"Department collaborative reply",
+        'form':form,
+        'question':question,
+
+    }
+
+    if request.method == "POST":
+        form = AnswerForm(request.POST or None)
+        if form.is_valid():
+            answer = form.cleaned_data['answer']
+            q = question.recommendation_set.get(to=current_dept)
+            q.recommended_answer = answer
+            q.save()
+            messages.success(request,"Recommended quesiton is addressed ")
+            return HttpResponseRedirect(reverse('department_dashboard'))
+
+    return render(request,"portal/department_collaboration_answer.html",context)
+
+
+def department_view_collaborated_question(request):
+    dept = Department.objects.get(user=User.objects.get(username=request.user))
+    recommend_question = dept.recommended_by_me.all()
+
+    print(recommend_question)
+
+    context = {
+        "title":"Question that you have asked to other ministry",
+        "recommend_question":recommend_question,
+    }
+
+    return render(request,"portal/department_view_collaborated_question.html",context)
+
+def department_view_collaborative_answer(request,pk):
+    dept = Department.objects.get(user=User.objects.get(username=request.user))
+    question = Question.objects.get(pk=pk)
+    recommend_question = question.recommendation_set.all()
+
+    print(recommend_question)
+
+    context = {
+        "title":"Answe by ministry",
+        "recommend_question": recommend_question,
+        "question":question,
+
+    }
+
+    return render(request,"department_view_collaborative_answer.html",context)
 
 def department_question(request):
     dept_user = Department.objects.get(user=User.objects.get(username=request.user))
 
     question = QuestionFor.objects.all().filter(asked_to=dept_user,answer=None)
+    print(question)
+
+
 
     context = {
         "title": "Welcome to Department DashBoard",
-        'question': question
+        'questions': question,
     }
     return render(request, "portal/department_view_question.html", context)

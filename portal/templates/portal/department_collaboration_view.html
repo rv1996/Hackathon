@@ -12,9 +12,19 @@
             </div>
             <div class="page-title">
                 <div class="container">
-                    <h3>View Questions</h3>
+                    <h3>{{ title }}</h3>
                 </div>
             </div>
+
+            <div class="container">
+            <div class="row">
+                {% for r in recommendation %}
+                    <div>Question :<a href="{% url 'department_collaboration' %}{{ r.question.id }}/answer/">{{ r.question.text }}</a></div>
+                    <div>Asked By :{{ r.by.department_name }}</div>
+                {% endfor %}
+            </div>
+            </div>
+
     </div>
 
 {% endblock %}

@@ -41,14 +41,14 @@ class QuestionFor(models.Model):
 
 class Recommendation(models.Model):
 
-    class Meta:
-        unique_together = (('to','by'))
+        # class Meta:
+        #     unique_together = (('to','by'))
 
     question = models.ForeignKey(Question)
     to = models.ForeignKey(Department,related_name='recommended_to_me') #related names are used for query back purpose
     by = models.ForeignKey(Department,related_name='recommended_by_me')
 
-    recommended_answer = models.TextField()
+    recommended_answer = models.TextField(null=True)
 
     def __str__(self):
         return "{} | {}".format(self.to.department_name,self.by.department_name)

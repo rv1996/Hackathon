@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # User Apps
     'portal',
+    'nltk_analyse',
 
     # Third Party Apps
     'crispy_forms'

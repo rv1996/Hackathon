@@ -14,7 +14,15 @@ $(document).ready(function (event) {
             url:"recommendation/",
             success:function (data) {
                 console.log("working");
-                $('#recommend_response').html("<h3> you can take help of these department</h3>");
+
+                var names = '';
+                console.log(data['recommend']);
+                for(i=0;i<data['recommend'].length;i++){
+                    names = names + data['recommend'][i]+", ";
+
+                }
+
+                $('#recommend_response').html("<h3> you can take help of "+names+" department</h3>");
 
             }
 

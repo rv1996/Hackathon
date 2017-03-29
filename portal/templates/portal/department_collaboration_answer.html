@@ -1,0 +1,59 @@
+{% extends 'portal/base.html' %}
+
+{% block department_dashboard %}
+
+
+    <div class="page-inner">
+            <div class="page-breadcrumb">
+                <ol class="breadcrumb container">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li class="active">Dashboard</li>
+                    <li class="active">View Questions</li>
+                </ol>
+            </div>
+            <div class="page-title">
+                <div class="container">
+                    <h3>{{ title }}</h3>
+                </div>
+            </div>
+
+            <div class="container">
+                                <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <br/>
+                                <div class="panel panel-success">
+                                    <div class="panel-heading clearfix">
+                                        <h4 class="panel-title">Subject : {{ question.subject }}</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <p style="padding-top: 10px;">Question : {{ question.text }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                            <form method="POST" action="">
+                                {% load crispy_forms_tags %}
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <input type="submit" class="btn btn-success" value="Submit Answer"/>
+                            </form>
+                                </div>
+                        </div>
+                        <div>
+                        </div>
+
+
+                    </div>
+
+            </div>
+
+    </div>
+
+
+
+{% endblock %}
