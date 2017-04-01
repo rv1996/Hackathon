@@ -1,9 +1,25 @@
 /* Write your custom CSS here */
-.logo-central{
+
+.logo-central {
 	position: relative;
-    width: auto;
-    height: 60px;
-    margin-left: 23.5%;
-    float: left
+	width: auto;
+	height: 60px;
+	margin-left: 23.5%;
+	float: left
 }
 
+.data_cell {
+	padding: 0px!important
+}
+
+.data_div {
+	padding: 10px!important
+}
+
+.addedmin {
+	background-color: #fff;
+	color: #333;
+	border: 1px solid #e5e5e5;
+	height: 30px;
+	width: 100%
+}

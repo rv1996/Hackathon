@@ -1,6 +1,11 @@
 {% extends "portal/base.html" %}
 
 {% block member_dashboard %}
+    <script>
+        $(document).ready(function () {
+            $('.datetime-input').datepicker();
+        });
+    </script>
     <div class="page-breadcrumb">
         <ol class="breadcrumb container">
             <li><a href="index-2.html">Home</a></li>

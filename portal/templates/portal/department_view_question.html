@@ -35,15 +35,15 @@
                                     <th>Subject</th><!--heading-->
                                 </tr>
                                 </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Q.No</th><!--heading-->
-                                    <th>Question type</th><!--heading-->
-                                    <th>Date</th><!--heading-->
-                                    <th>Member</th><!--heading-->
-                                    <th>Subject</th><!--heading-->
-                                </tr>
-                                </tfoot>
+{#                                <tfoot>#}
+{#                                <tr>#}
+{#                                    <th>Q.No</th><!--heading-->#}
+{#                                    <th>Question type</th><!--heading-->#}
+{#                                    <th>Date</th><!--heading-->#}
+{#                                    <th>Member</th><!--heading-->#}
+{#                                    <th>Subject</th><!--heading-->#}
+{#                                </tr>#}
+{#                                </tfoot>#}
                                 <tbody>
                                 {% for q in questions %}
                                     <tr>
@@ -51,7 +51,7 @@
                                         <td>{{ q.question.type }}</td>
                                         <td>{{ q.question.timestamp|timesince }}</td>
                                         <td>{{ q.question.asked_by }}</td>
-                                        <td><a href="{% url 'department_view_question' %}{{ q.id }}/answer/">{{ q.question.subject }}</a>
+                                        <td><a href="{% url 'department_view_question' %}{{ q.question.id }}/answer/">{{ q.question.subject }}</a>
                                         </td>
                                     </tr>
                                     </tbody>

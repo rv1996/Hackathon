@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from .forms import Member, QuestionForm, AnswerForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponseRedirect,HttpResponse
+from .forms import Member, QuestionForm, AnswerForm , Cs_admissable
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -12,16 +13,47 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-def home(request):
+def login(request):
+    form = Member(request.POST or None)
+
     context = {
         "title": "welcome to home page",
+        "form":form,
     }
-    return render(request, "portal/home.html", context)
+    return render(request, "portal/login.html", context)
+
+
+def cs_login(request):
+    form = Member(request.POST or None)
+    context = {
+        "title": "Login page",
+        "form": form,
+    }
+    if request.method == "POST":
+        form = Member(request.POST or None)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            # dept_user = User.objects.get(username=username)
+
+            user = auth.authenticate(username=username, password=password)
+
+            official_user = User.objects.get(username=username)
+            if not official_user.is_superuser:
+                messages.success(request,"Not an official member")
+                return HttpResponseRedirect(reverse("login"))
+
+            if user is not None:
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse("cs_dashboard"))
+
+    return render(request, "portal/cs_dashboard.html", context=context)
+
 
 
 def department_login(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse("member_dashboard"))
+    # if request.user.is_authenticated() and not request.session.get('is_member'):
+    #     return HttpResponseRedirect(reverse("member_dashboard"))
 
     form = Member(request.POST or None)
     context = {
@@ -38,7 +70,7 @@ def department_login(request):
                 print(dept_user.department)
             except Exception as e:
                 messages.warning(request, "Not the official member of ministry")
-                return render(request, "portal/department_login.html", context=context)
+                return HttpResponseRedirect(reverse('login'))
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
@@ -48,8 +80,8 @@ def department_login(request):
 
 
 def member_login(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse("member_dashboard"))
+    # if request.user.is_authenticated():
+    #     return HttpResponseRedirect(reverse("member_dashboard"))
 
     form = Member(request.POST or None)
     context = {
@@ -61,10 +93,31 @@ def member_login(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+
             # here we have to check that the member should be an MP and not the department member.
+
+            # dept = {}
+
+
+
+            try:
+                dept = Department.objects.get(user=User.objects.get(username=username))
+                messages.success(request, "Please enter your valid credentials")
+                return HttpResponseRedirect(reverse('login'))
+            except Exception as e:
+                pass
+            #
+            #
+            #
+            # if dept.department_name != '':
+            #     messages.success(request,"Please enter your valid credentials")
+            #     return HttpResponseRedirect(reverse('login'))
+
+
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
+                request.session['is_member'] = True
                 return HttpResponseRedirect(reverse("member_dashboard"))
 
     return render(request, "portal/mp_login.html", context=context)
@@ -72,7 +125,7 @@ def member_login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect(reverse('home'))
+    return redirect(reverse('login'))
 
 
 def member_dashboard(request):
@@ -182,7 +235,11 @@ def department_question_answer(request, pk):
 
     }
 
-    return render(request, "portal/department_question_answer.html", context)
+    if question.type == 'unstarred':
+        return render(request, "portal/department_answer_oral.html", context)
+    else:
+        return render(request, "portal/department_question_answer.html", context)
+
 
 
 def department_recommend(request, pk):
@@ -194,45 +251,22 @@ def department_recommend(request, pk):
 
     current_department = Department.objects.get(user=User.objects.get(username=request.user))
 
-
-
-
-    print(request.POST.getlist('select'))
-
     recommend_list = request.POST.getlist('select')
-
-    print(request.user)
-    print("------")
+    print(recommend_list)
     dept = User.objects.get(username=request.user)
 
-
-
-    print(dept)
-
-
-
+    if request.method == "POST":
+        for d in recommend_list:
+            current_department.recommended_by_me.create(to=Department.objects.get(user=User.objects.get(username=d)),question=question)
+            messages.success(request,"Recommendation request has been send you'll be notified  as the ministry reply the answer")
+            question.is_recommeded = True
+            question.save()
+            return HttpResponseRedirect(reverse('department_dashboard'))
     # recommend_object_list = []
-    for d in recommend_list:
-        current_department.recommended_by_me.create(to=Department.objects.get(user=User.objects.get(username=d)),question=question)
-        messages.success(request,"Recommendation request has been send you'll be notified  as the ministry reply the answer")
-        return HttpResponseRedirect(reverse('department_dashboard'))
-        # dept_recommend = Department(user=User.objects.get(username=d))
-        # dept_recommend.save()
-        # question.recommendation_set.create(to=dept_recommend,by=Department.objects.get(user=dept))
-        # dept_user.recommended_by_me = dept_user
-        # dept_user.recommended_to_me = Department.objects.get(user=User.objects.get(username=d))
 
 
 
 
-
-        #
-        # recommend = Recommendation.objects.create(question=question,by = dept_user,to = dept_recommend )
-        # recommend.save()
-        # recommend_object_list.append(recommend)
-
-
-    # print(recommend_object_list)
 
 
     context = {
@@ -310,12 +344,14 @@ def department_view_collaborative_answer(request,pk):
 
     }
 
-    return render(request,"department_view_collaborative_answer.html",context)
+    return render(request,"portal/department_view_collaborative_answer.html",context)
 
 def department_question(request):
     dept_user = Department.objects.get(user=User.objects.get(username=request.user))
 
-    question = QuestionFor.objects.all().filter(asked_to=dept_user,answer=None)
+    #possible to query via foreign key reference
+
+    question = QuestionFor.objects.all().filter(asked_to=dept_user,question__is_admisable=True)
     print(question)
 
 
@@ -325,3 +361,48 @@ def department_question(request):
         'questions': question,
     }
     return render(request, "portal/department_view_question.html", context)
+
+
+def cs_dashboard(request):
+    form = Cs_admissable(request.POST or None)
+    question_list = QuestionFor.objects.all().filter(question__is_admisable=False,question__is_admissed=False)
+
+    paginator = Paginator(question_list, 2)
+
+    page = request.GET.get('page')
+    try:
+        question = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        question = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        question = paginator.page(paginator.num_pages)
+    #
+    # print(question.has_previous(),question.next_page_number(),question.number,question.has_next())
+
+    context = {
+        'title': "Central authority to qualify questions",
+        'form': form,
+        'question': question,
+    }
+
+    return render(request, 'portal/cs_dashboard.html', context)
+
+
+def cs_question_update(request,pk):
+
+    question = Question.objects.get(pk=pk)
+    question.type = request.POST.get('type')
+
+    if request.POST.get('admissable') == 'True':
+        question.is_admisable = True
+    else:
+        question.is_admisable = False
+
+    question.is_admissed = True
+    question.save()
+
+    messages.success(request, "Thank you for your time , The question is send to the respective ministry!")
+
+    return HttpResponseRedirect(reverse('cs_dashboard'))

@@ -37,7 +37,7 @@
                                     <tr>
                                         <td>{{ forloop.counter }}</td>
                                         <td>{{ q.type }}</td>
-                                        <td>{{ q.timestamp|timesince }}</td>
+                                        <td>{{ q.timestamp }}</td>
                                         <td>{{ q.asked_by }}</td>
                                         <td><a href="{% url 'member_history' %}{{ q.id }}/view/">{{ q.subject }}</a>
                                         </td>

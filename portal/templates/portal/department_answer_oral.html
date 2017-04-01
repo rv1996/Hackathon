@@ -1,0 +1,19 @@
+{% extends 'portal/base.html' %}
+
+{% block body %}
+    <div class="page-breadcrumb">
+        <ol class="breadcrumb container">
+            <li><a href="index-2.html">Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </div>
+    <div class="page-title">
+        <div class="container">
+            <h3>Dashboard : {{ request.user }}</h3>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Collaborative reply</h2>
+    </div>
+
+{% endblock %}

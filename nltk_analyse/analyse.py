@@ -88,19 +88,19 @@ def analyse_keywords(example):
     synonyms=sorted(set(synonyms))
     synonyms = {item.lower() for item in synonyms}
     print("Synonyms of the keywords found in the question")
-    print(synonyms)                                                             #synonyms of important words of the question-----------------------------
+    print(synonyms)                                                             # synonyms of important words of the question-----------------------------
 
     syn_count=[]
-    for i in range(len(files)):                                               #count for synonyms--------------------------
-        fopen=open(os.path.join(BASE_DIR,files[i]))
-        text=fopen.read().strip().split()
+    for i in range(len(files)):                                               # count for synonyms--------------------------
+        fopen = open(os.path.join(BASE_DIR,files[i]))
+        text = fopen.read().strip().split()
         text = sorted(set(text))
-        text={item.lower() for item in text}
-        comm=set(text)&set(synonyms)
-        if(len(comm)>0):
+        text = {item.lower() for item in text}
+        comm = set(text)&set(synonyms)
+        if len(comm)>0:
             print("synonyms set" )
             print(comm)
-            syn_count.append(list((fopen.name,len(comm))))                   #synoyms counted--------------------------
+            syn_count.append(list((fopen.name,len(comm))))                   # synoyms counted--------------------------
     fopen.close()
     print(syn_count)
 
@@ -109,7 +109,7 @@ def analyse_keywords(example):
     newl=[]
     print("Sorted List for synonym count is :")
     newl=sorted(syn_count,key=getKey,reverse=True)
-    print(newl)                 #sorted list of synonyms count----------------
+    print(newl)                 # sorted list of synonyms count----------------
 
 
 
@@ -158,6 +158,10 @@ def analyse_keywords(example):
 
 
     print(final_min)
-    return final_min
+
+    suggestion = []
+    for l in final_min:
+        suggestion.append(l.split('/')[-1])
+    return suggestion
 
 # analyse_keywords(example)

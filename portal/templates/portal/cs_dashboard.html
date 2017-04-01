@@ -1,0 +1,104 @@
+{% extends 'portal/base.html' %}
+
+{% block body %}
+
+    <div class="page-inner">
+        <div class="page-breadcrumb">
+            <ol class="breadcrumb container">
+                <li><a href="#">Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+        <div class="page-title">
+            <div class="container">
+                <h3>Categories And Verify :</h3>
+            </div>
+        </div>
+        <div id="main-wrapper" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Categories &amp; Verify Questions as Starred/Unstarred :</h3>
+                        </div>
+                        <br/>
+
+                        <div class="panel-body">
+
+                            {% for q in question %}
+                                <div class="row">
+
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="panel panel-success">
+                                            <div class="panel-body">MP: {{ q.question.text }} | Question Subject
+                                                : {{ q.question.subject }} <br/>
+                                                {{ q.question.text }}
+                                            </div>
+
+                                                {% csrf_token %}
+                                                <div class="panel-footer">
+                                                    <div class="row">
+                                                        <form method="POST" action="
+                                                                {% url 'cs_dashboard' %}{{ q.question.id }}/submit/">
+                                                            {% csrf_token %}
+                                                            {% load crispy_forms_tags %}
+                                                            {{ form }}
+                                                            <div style="display: block;float: right">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Update">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+            <span class="step-links">
+                {% if question.has_previous %}
+                    <a href="?page={{ question.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ question.number }} of {{ question.paginator.num_pages }}.
+                </span>
+
+                {% if question.has_next %}
+                    <a href="?page={{ question.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+            </div>
+            <!-- Row -->
+        </div>
+    </div>
+{#    <div class="container">#}
+{#        {% for q in question %}#}
+{#            <div class="panel panel-default hiding-query"> {% comment %}#hide and showing using jquery and child element access{% endcomment %}#}
+{#                <div class="panel-body">Subject :{{ q.question.subject }}</div>#}
+{#                <div class="panel-body">Question :{{ q.question.text }}</div>#}
+{#                <div class="panel-body">Asked to :{{ q.asked_to }}</div>#}
+{#                <div class="container">#}
+{#                    <form method="POST" action="{% url 'cs_dashboard' %}{{ q.question.id }}/submit/">#}
+{#                        {% csrf_token %}#}
+{#                        {% load crispy_forms_tags %}#}
+{#                        {{ form }}#}
+{#                        <div style="display: block;float: right">#}
+{#                            <input type="submit" class="btn btn-success" value="Update">#}
+{#                        </div>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{##}
+{##}
+{#    </div>#}
+{##}
+
+{% endblock %}

@@ -14,97 +14,114 @@
         </div>
     </div>
 
-    <div id="main-wrapper" class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="">
-                                <div class="panel panel-success">
-                                    <div class="panel-heading clearfix">
-                                        <h4 class="panel-title">Subject : {{ question.subject }}</h4>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div>
-                                            <p>Question : {{ question.text }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="" method="POST">
-                            {% csrf_token %}
+    {% if not question.is_recommeded %}
 
+        <div id="main-wrapper" class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-7">
-                                    <div class="panel panel-white">
+                                <div class="">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading clearfix">
+                                            <h4 class="panel-title">Subject : {{ question.subject }}</h4>
+                                        </div>
                                         <div class="panel-body">
-                                            <h3>Select Ministries to Invite</h3>
-                                            <select class="js-states form-control" multiple="multiple" tabindex="-1"
-                                                    name="select"
-                                                    style="display: none; width: 100%">
-
-                                                {% for dept in recommend %}
-                                                    <option value="{{ dept.user }}">{{ dept }}</option>
-                                                {% endfor %}
-                                            </select>
-
-
-                                            <div class="row">
-                                                <div class="col-md-7">
-                                                    <button type="button" onclick="adddomfunc();"
-                                                            class="btn btn-success btn-addon m-b-sm"><i
-                                                            class="fa fa-plus"></i> Add Ministries
-                                                    </button>
-                                                </div>
+                                            <div>
+                                                <p>Question : {{ question.text }}</p>
                                             </div>
-
-                                            <div class="row">
-                                                <div class="col-md-7">
-
-                                                    <input type="button" class="btn btn-success" id="recommend_button"
-                                                           value="Get Recommendation">
-{#                                                    <input type="hidden" id="question_id" value="{{ question.id }}">#}
-                                                </div>
-                                            </div>
-
-
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="panel panel-green">
-                                        <div class="panel-body" id="minpanel">
-                                            <br/>
-                                            <button type="button" onclick="clearmin();"
-                                                    class="btn btn-default btn-addon m-b-sm"><i class="fa fa-plus"></i>
-                                                Clear Ministries
-                                            </button>
-                                            <button type="button" class="btn btn-default btn-addon m-b-sm"><i
-                                                    class="fa fa-plus"></i> Submit Ministries
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="col-sm-5">
-                                            <input type="submit" class="btn btn-success"
-                                                   value="Take help of these departments">
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="panel panel-white">
+                                            <div class="panel-body">
+                                                <h3>Select Ministries to Invite</h3>
+                                                <select class="js-states form-control" multiple="multiple" tabindex="-1"
+                                                        name="select"
+                                                        style="display: none; width: 100%">
+
+                                                    {% for dept in recommend %}
+                                                        <option value="{{ dept.user }}">{{ dept }}</option>
+                                                    {% endfor %}
+                                                </select>
+
+
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <button type="button" onclick="adddomfunc();"
+                                                                class="btn btn-success btn-addon m-b-sm"><i
+                                                                class="fa fa-plus"></i> Add Ministries
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-7">
+
+                                                        <input type="button" class="btn btn-success"
+                                                               id="recommend_button"
+                                                               value="Get Recommendation">
+                                                        {#                                                    <input type="hidden" id="question_id" value="{{ question.id }}">#}
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="panel panel-green">
+                                            <div class="panel-body" id="minpanel">
+                                                <br/>
+                                                <button type="button" onclick="clearmin();"
+                                                        class="btn btn-default btn-addon m-b-sm"><i
+                                                        class="fa fa-plus"></i>
+                                                    Clear Ministries
+                                                </button>
+                                                <button type="button" class="btn btn-default btn-addon m-b-sm"><i
+                                                        class="fa fa-plus"></i> Submit Ministries
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="col-sm-5">
+                                                <input type="submit" class="btn btn-success"
+                                                       value="Take help of these departments">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="recommend_response"></div>
+
+                </div>
+            </div>
+
+            <!-- Row -->
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="container">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-block">
+                        <h4 class="card-title">You have already recommeded this question</h4>
+
+                        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-success">Go back</a>
                     </div>
                 </div>
-                <div id="recommend_response"></div>
-
             </div>
         </div>
-
-        <!-- Row -->
-    </div>
+    {% endif %}
 {% endblock %}

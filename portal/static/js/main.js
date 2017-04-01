@@ -1,38 +1,29 @@
 /**
- * Created by rupanshu on 27/3/17.
+ * Created by rupanshu on 1/4/17.
  */
-
 
 $(document).ready(function (event) {
 
-    // code for adding more department in the recommendation  form of ministry
 
-    $('#recommend_button').click(function(event){
-
+    $('#recommend_button').click(function () {
         $.ajax({
-            type:"GET",
-            url:"recommendation/",
-            success:function (data) {
+            type: "GET",
+            url: "recommendation/",
+            success: function (data) {
                 console.log("working");
 
                 var names = '';
                 console.log(data['recommend']);
-                for(i=0;i<data['recommend'].length;i++){
-                    names = names + data['recommend'][i]+", ";
+                for (i = 0; i < data['recommend'].length; i++) {
+                    names = names + data['recommend'][i] + ", ";
 
                 }
 
-                $('#recommend_response').html("<h3> you can take help of "+names+" department</h3>");
+                $('#recommend_response').html("<h3> you can take help of " + names + " department</h3>");
 
             }
-
-        })
+        });
     });
-
-
-
-
-    // recommendation ends here
 
 
     // CSRF code

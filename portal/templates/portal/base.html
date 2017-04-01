@@ -19,17 +19,20 @@
     <link href="{% static 'plugins/waves/waves.min.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'plugins/switchery/switchery.min.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'plugins/3d-bold-navigation/css/style.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'plugins/slidepushmenus/css/component.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'plugins/datatables/css/jquery.datatables.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css' %}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static 'plugins/datatables/css/jquery.datatables_themeroller.css' %}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static 'plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" type="text/css"/>
-
-    <link href="{% static 'plugins/weather-icons-master/css/weather-icons.min.css' %}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{% static 'plugins/metrojs/MetroJs.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    {#    <link href="{% static 'plugins/slidepushmenus/css/component.css' %}" rel="stylesheet" type="text/css"/>#}
+    {#    <link href="{% static 'plugins/datatables/css/jquery.datatables.min.css' %}" rel="stylesheet" type="text/css"/>#}
+    {#    <link href="{% static 'plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css' %}" rel="stylesheet"#}
+    {#          type="text/css"/>#}
+    {#    <link href="{% static 'plugins/datatables/css/jquery.datatables_themeroller.css' %}" rel="stylesheet"#}
+    {#          type="text/css"/>#}
+    {#    <link href="{% static 'plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" type="text/css"/>#}
+    {##}
+    {#    <link href="{% static 'plugins/weather-icons-master/css/weather-icons.min.css' %}" rel="stylesheet"#}
+    {#          type="text/css"/>#}
+    {#    <link href="{% static 'plugins/metrojs/MetroJs.min.css' %}" rel="stylesheet" type="text/css"/>#}
     <link href="{% static 'plugins/select2/css/select2.css' %}" rel="stylesheet" type="text/css"/>
 
     <link href="{% static 'plugins/toastr/toastr.min.css' %}" rel="stylesheet" type="text/css"/>
@@ -56,7 +59,7 @@
     <script src="https://use.fontawesome.com/936bbf24d4.js"></script>
 
 </head>
-<body style="background-color: white">
+<body style="background-color: white;">
 
 {% block navbar %}
     <div class="navbar" style="padding: 10px;">
@@ -102,12 +105,13 @@
 {% block member_dashboard %}{% endblock %}
 {% block department_dashboard %}{% endblock %}
 
-
-<footer>
-    <div class="container">
-        <p class="no-s">2017© The Resolution Squad.</p>
+{% block footer %}
+    <div>
+        <div class="container">
+            <p class="no-s">2017© The Resolution Squad.</p>
+        </div>
     </div>
-</footer>
+{% endblock %}
 
 
 {# javascript files #}
@@ -126,12 +130,12 @@
 <script src="{% static 'plugins/3d-bold-navigation/js/main.js' %}"></script>
 <script src="{% static 'js/modern.js' %}"></script>
 <script src="{% static 'js/pages/form-select2.js' %}"></script>
-<script src="{% static 'plugins/jquery-mockjax-master/jquery.mockjax.js' %}"></script>
-<script src="{% static 'plugins/moment/moment.js' %}"></script>
-<script src="{% static 'plugins/datatables/js/jquery.datatables.min.js' %}"></script>
-<script src="{% static 'plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js' %}"></script>
-<script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
-<script src="{% static 'js/pages/table-data.js' %}"></script>
+{#<script src="{% static 'plugins/jquery-mockjax-master/jquery.mockjax.js' %}"></script>#}
+{#<script src="{% static 'plugins/moment/moment.js' %}"></script>#}
+{#<script src="{% static 'plugins/datatables/js/jquery.datatables.min.js' %}"></script>#}
+{#<script src="{% static 'plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js' %}"></script>#}
+{#<script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>#}
+{#<script src="{% static 'js/pages/table-data.js' %}"></script>#}
 <script src="{% static 'plugins/select2/js/select2.min.js' %}"></script>
 
 
