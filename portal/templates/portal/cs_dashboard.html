@@ -30,27 +30,27 @@
 
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="panel panel-success">
-                                            <div class="panel-body">MP: {{ q.question.text }} | Question Subject
+                                            <div class="panel-body">MP: {{ q.question.asked_by }} <br>Subject
                                                 : {{ q.question.subject }} <br/>
-                                                {{ q.question.text }}
+                                                Question :{{ q.question.text }}
                                             </div>
 
-                                                {% csrf_token %}
-                                                <div class="panel-footer">
-                                                    <div class="row">
-                                                        <form method="POST" action="
+                                            {% csrf_token %}
+                                            <div class="panel-footer">
+                                                <div class="row">
+                                                    <form method="POST" action="
                                                                 {% url 'cs_dashboard' %}{{ q.question.id }}/submit/">
-                                                            {% csrf_token %}
-                                                            {% load crispy_forms_tags %}
-                                                            {{ form }}
-                                                            <div style="display: block;float: right">
-                                                                <input type="submit" class="btn btn-success"
-                                                                       value="Update">
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                                        {% csrf_token %}
+                                                        {% load crispy_forms_tags %}
+                                                        {{ form }}
+                                                        <div style="display: block;float: right">
+                                                            <input type="submit" class="btn btn-success"
+                                                                   value="Update">
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -78,27 +78,6 @@
             <!-- Row -->
         </div>
     </div>
-{#    <div class="container">#}
-{#        {% for q in question %}#}
-{#            <div class="panel panel-default hiding-query"> {% comment %}#hide and showing using jquery and child element access{% endcomment %}#}
-{#                <div class="panel-body">Subject :{{ q.question.subject }}</div>#}
-{#                <div class="panel-body">Question :{{ q.question.text }}</div>#}
-{#                <div class="panel-body">Asked to :{{ q.asked_to }}</div>#}
-{#                <div class="container">#}
-{#                    <form method="POST" action="{% url 'cs_dashboard' %}{{ q.question.id }}/submit/">#}
-{#                        {% csrf_token %}#}
-{#                        {% load crispy_forms_tags %}#}
-{#                        {{ form }}#}
-{#                        <div style="display: block;float: right">#}
-{#                            <input type="submit" class="btn btn-success" value="Update">#}
-{#                        </div>#}
-{#                    </form>#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{##}
-{##}
-{#    </div>#}
-{##}
+
 
 {% endblock %}

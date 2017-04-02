@@ -26,8 +26,11 @@ SECRET_KEY = '2yn-!#@@(@83b3@xk8_3670%k4y6$4t5hhk@go*b8^8)r6@t27'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_HOST_USER="srivastavapankhuri.12@gmail.com"
+EMAIL_HOST_PASSWORD="kalamotaaadmi"
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
 # Application definition
 
 INSTALLED_APPS = [

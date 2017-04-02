@@ -3,27 +3,57 @@
 {% block department_dashboard %}
 
     <div class="page-inner">
-            <div class="page-breadcrumb">
-                <ol class="breadcrumb container">
-                    <li><a href="index-2.html">Home</a></li>
-                    <li class="active">Dashboard</li>
-                    <li class="active">View Questions</li>
-                </ol>
+        <div class="page-breadcrumb">
+            <ol class="breadcrumb container">
+
+                <li class="active"><a href="{% url 'department_dashboard' %}">Dashboard</a></li>
+                <li class="active">{{ title }}</li>
+            </ol>
+        </div>
+        <div class="page-title">
+            <div class="container">
+                <h3>{{ title }}</h3>
             </div>
-            <div class="page-title">
+        </div>
+        <div class="container">
+
+            <div class="panel panel-white">
                 <div class="container">
-                    <h3>{{ title }}</h3>
+                    <div class="panel-heading clearfix">
+                        <h4 class="panel-title" style="font-size:150%">View Questions</h4>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="container">
+                        {% for r in recommendation %}
+
+                            <div class="" style="display: block;">
+                            Question :<a href="
+
+
+                                {% url 'department_collaboration' %}{{ r.question.id }}/answer/">{{ r.question.text }}</a>
+                            <br>
+                            Asked By :{{ r.by.department_name }}
+
+                        {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-            <div class="row">
-                {% for r in recommendation %}
-                    <div>Question :<a href="{% url 'department_collaboration' %}{{ r.question.id }}/answer/">{{ r.question.text }}</a></div>
-                    <div>Asked By :{{ r.by.department_name }}</div>
-                {% endfor %}
-            </div>
-            </div>
+        {#        <div class="container">#}
+        {#            <div class="row">#}
+        {#                {% for r in recommendation %}#}
+        {#                    <div>Question :<a href="#}
+        {#                            {% url 'department_collaboration' %}{{ r.question.id }}/answer/">{{ r.question.text }}</a>#}
+        {#                    </div>#}
+        {#                    <div>Asked By :{{ r.by.department_name }}</div>#}
+        {#                {% endfor %}#}
+        {#            </div>#}
+        {#        </div>#}
 
     </div>
 

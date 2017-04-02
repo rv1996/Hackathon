@@ -24,7 +24,6 @@ class Member(forms.Form):
 
 # Helper Function
 def department_choice():
-
     dept = Department.objects.all()
 
     DEPARTMENT = ()
@@ -35,9 +34,10 @@ def department_choice():
     print(DEPARTMENT)
     return DEPARTMENT
 
-class AnswerForm(forms.Form):
-    answer = forms.CharField(widget=forms.Textarea,required=True)
 
+class AnswerForm(forms.Form):
+    answer = forms.CharField(
+        widget=forms.Textarea(attrs={'id': 'answer-field-writen', 'contenteditable': 'true', 'type':'textarea'}), required=True)
 
 
 class QuestionForm(forms.Form):
@@ -45,7 +45,7 @@ class QuestionForm(forms.Form):
     type = forms.ChoiceField(choices=(('starred', 'starred'), ('unstarred', 'unstarred')),
                              label="Select the Type of question?", required=True)
     subject = forms.CharField(max_length=500)
-    deadline = forms.DateField(widget=forms.DateInput(attrs={'class': 'datetime-input'}),initial=datetime.now())
+    deadline = forms.DateField(widget=forms.DateInput(attrs={'class': 'datetime-input'}), initial=datetime.now())
 
     asking_to = forms.ChoiceField(choices=department_choice(), label="Select Ministry", required=True)
 
@@ -56,8 +56,7 @@ class Cs_admissable(forms.Form):
     admissable = forms.ChoiceField(widget=forms.RadioSelect(
         attrs={'type': 'radio', 'id': 'test1', 'name': 'group1'}),
         label='Is it admissable?',
-        choices=((True,'Yes'),(False,'No')), required=True
+        choices=((True, 'Yes'), (False, 'No')), required=True
     )
     type = forms.ChoiceField(choices=(('starred', 'starred'), ('unstarred', 'unstarred')),
                              label="Select the Type of question?", required=True)
-

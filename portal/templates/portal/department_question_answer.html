@@ -2,10 +2,41 @@
 
 
 {% block department_dashboard %}
+
+    <script>
+
+        $(document).ready(function (data) {
+
+            $('.add_answer_writen').on('click', function (data) {
+                var answer = $(this).siblings('.parent_answer').text();
+                var answer_by = $(this).siblings('.answer_by').text();
+                console.log(answer);
+
+                $('#answer-field-writen').val($('#answer-field-writen').val() + "\n");
+                $('#answer-field-writen').val($('#answer-field-writen').val() + answer_by);
+                $('#answer-field-writen').val($('#answer-field-writen').val() + "\n");
+
+                $('#answer-field-writen').val($('#answer-field-writen').val() + answer);
+                $('#answer-field-writen').val($('#answer-field-writen').val() + "\n");
+                $('#answer-field-writen').val($('#answer-field-writen').val() + "\n");
+
+                {#                $('#answer-field-writen').append(answer_by);#}
+                {#                $('#answer-field-writen').append('\n');#}
+                {#                $('#answer-field-writen').append(answer);#}
+                {#                $('#answer-field-writen').append('\n');#}
+                {#                $('#answer-field-writen').append('\n');#}
+            })
+
+        })
+
+    </script>
+
+
     <div class="page-breadcrumb">
         <ol class="breadcrumb container">
-            <li><a href="index-2.html">Home</a></li>
-            <li class="active">Dashboard</li>
+            <li><a href="{% url 'department_dashboard' %}">Department</a></li>
+            <li><a href="{% url 'department_view_question' %}">View Question</a></li>
+            <li class="active">Answer</li>
         </ol>
     </div>
     <div class="page-title">
@@ -13,17 +44,24 @@
             <h3>Dashboard : {{ request.user }}</h3>
         </div>
     </div>
-
-    <div id="main-wrapper" class="container">
+    {% if not answered %}
+        <div id="main-wrapper" class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <h4 class="panel-title">The <span id="invitee">MP</span> has adressed to you the following
                             question, Create a Reply!</h4>
-                        <a style="float: right;margin-bottom: 10px;" href="{% url 'department_view_question' %}{{ question.id }}/recommend/" class="btn btn-success">Recommend this question</a>
-                    </div>
+                        {% if not question.is_recommeded %}
+                            <a style="float: right;margin-bottom: 10px;"
+                               href="{% url 'department_view_question' %}{{ question.id }}/recommend/"
+                               class="btn btn-success">Recommend this question</a>
+                        {% else %}
+                            <input type="button" style="float: right;" class="btn btn-success"
+                                   value="Already recommended">
+                        {% endif %}
 
+                    </div>
 
 
                     <div class="panel-body">
@@ -36,7 +74,8 @@
                                     </div>
                                     <div class="panel-body">
                                         <div>
-                                            <p style="padding-top: 10px;">Question : {{ question.text }}</p>
+                                            <p>Type : {{ question.type }}</p>
+                                            <p style="padding-top: 5px;">Question : {{ question.text }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -44,13 +83,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
-                            <form method="POST" action="">
-                                {% load crispy_forms_tags %}
-                                {% csrf_token %}
-                                {{ form|crispy }}
-                                <input type="submit" class="btn btn-success" value="Submit Answer"/>
-                            </form>
-                                </div>
+                                <form method="POST" action="">
+                                    {% load crispy_forms_tags %}
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <input type="submit" class="btn btn-success" value="Submit Answer"/>
+                                </form>
+                            </div>
                         </div>
                         <div>
                         </div>
@@ -61,7 +100,44 @@
             </div>
         </div>
 
-        <!-- Row -->
-    </div>
+        <div class="container">
+            <h3>Question answered by other department</h3>
+            <div style="font-size: medium">
+                {% for q in recommeded_response %}
+                    <label>question : {{ q.question.text }}</label><br>
+                    <label class="answer_by">Answer by : {{ q.to }}</label>
+                    <div class="parent_answer">Answer : <span id="answer">{{ q.recommended_answer }}</span></div>
+
+                    <input type="button" class="btn btn-success add_answer_writen" value="Add">
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div id="main-wrapper" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading clearfix">
+                            <h3 class="panel-title">This question is already answered</h3>
+                        </div>
+                        <div class="container">
+                            <br>
+                            Answer : {{ answer }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endif %}
+
+
+
+
+
+<!-- Row -->
+</div>
 
 {% endblock %}

@@ -19,7 +19,8 @@ $(document).ready(function (event) {
 
                 }
 
-                $('#recommend_response').html("<h3> you can take help of " + names + " department</h3>");
+                $('#recommend_response').append("<h3> you can take help of department</h3>");
+                $('#recommend_response').append("<br>" + names);
 
             }
         });

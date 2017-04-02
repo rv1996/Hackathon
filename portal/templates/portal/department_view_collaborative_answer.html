@@ -1,12 +1,27 @@
 {% extends 'portal/base.html' %}
 
 {% block department_dashboard %}
+    <div class="page-breadcrumb">
+        <ol class="breadcrumb container">
+            <li><a href="{% url 'department_dashboard' %}">Department</a></li>
+            <li><a href="{% url 'department_view_collaborative_question' %}" >Asked to Other Ministry</a></li>
+            <li>View Answer</li>
+
+        </ol>
+    </div>
+    <div class="page-title">
+        <div class="container">
+            <h3>Dashboard : {{ request.user }} </h3>
+        </div>
+    </div>
     <div id="main-wrapper" class="container">
         <div class="row">
+
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">View Reply:</h3><!--heading-->
+                        <a class="btn btn-success" style="float: right" href="{% url 'department_view_question' %}{{ question.id }}/answer/">Create reply</a>
                     </div>
                     <br/>
                     <h4>Question : {{ question.text }} </h4>

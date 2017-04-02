@@ -4,9 +4,9 @@
     <div class="page-inner">
         <div class="page-breadcrumb">
             <ol class="breadcrumb container">
-                <li><a href="index-2.html">Home</a></li>
-                <li class="active">Dashboard</li>
-                <li class="active">View Questions</li>
+                <li><a href="{% url 'department_dashboard' %}">Department</a></li>
+                <li class="active">View Question</li>
+
             </ol>
         </div>
         <div class="page-title">
@@ -35,15 +35,6 @@
                                     <th>Subject</th><!--heading-->
                                 </tr>
                                 </thead>
-{#                                <tfoot>#}
-{#                                <tr>#}
-{#                                    <th>Q.No</th><!--heading-->#}
-{#                                    <th>Question type</th><!--heading-->#}
-{#                                    <th>Date</th><!--heading-->#}
-{#                                    <th>Member</th><!--heading-->#}
-{#                                    <th>Subject</th><!--heading-->#}
-{#                                </tr>#}
-{#                                </tfoot>#}
                                 <tbody>
                                 {% for q in questions %}
                                     <tr>

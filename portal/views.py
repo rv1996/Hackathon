@@ -8,6 +8,12 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Question, Department, QuestionFor, Recommendation
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
+from django.conf import settings
+
 
 
 # Create your views here.
@@ -211,31 +217,54 @@ def department_dashboard(request):
 
 
 def department_question_answer(request, pk):
-    question = Question.objects.get(pk=pk)
+    question = QuestionFor.objects.get(question = Question.objects.get(pk=pk))
     form = AnswerForm(request.POST or None)
 
-    print(question.type)
+    current_dept = Department.objects.get(user=User.objects.get(username=request.user))
+
+    recommeded_response = current_dept.recommended_by_me.all()
+
+    for q in recommeded_response:
+        print(q.question)
+        print(q.to.department_name) # ---> recommended to the ministry
+        print(q.by.department_name) # ---> current department
+
+
+
+
+    # print(question.type)
 
     if request.method == "POST":
         form = AnswerForm(request.POST or None)
         if form.is_valid():
             form_answer = form.cleaned_data['answer']
             department = Department.objects.get(user=User.objects.get(username=request.user))
-            answer = QuestionFor.objects.get(question=question, asked_to=department)
+            answer = QuestionFor.objects.get(question=question.question, asked_to=department)
             answer.answer = form_answer
             answer.save()
 
             messages.success(request, "Thank you for your time, Mp will get the update regarding this question")
             return HttpResponseRedirect(reverse('department_dashboard'))
 
+    answered = False
+    if question.answer is not None:
+        answered = True
+    print('--------')
+    print(question.answer)
+
+
     context = {
         'title': "Give your answer here",
         'form': form,
-        'question': question,
+        'question': question.question,
+        'answered':answered,
+        'answer':question.answer,
+        'recommeded_response':recommeded_response,
 
     }
 
-    if question.type == 'unstarred':
+    if question.question.type == 'starred':
+        context['starred'] = True
         return render(request, "portal/department_answer_oral.html", context)
     else:
         return render(request, "portal/department_question_answer.html", context)
@@ -284,7 +313,7 @@ def department_collaboration(request):
     recommendation = current_dept.recommended_to_me.all()
 
     context = {
-        'title': "Collaboraion Help",
+        'title': "Collaborative Help",
         'recommendation':recommendation,
     }
     return render(request, "portal/department_collaboration_view.html", context)
@@ -401,8 +430,59 @@ def cs_question_update(request,pk):
         question.is_admisable = False
 
     question.is_admissed = True
+
+    data = QuestionFor.objects.get(question=question)
+    if question.is_admisable :
+        data = QuestionFor.objects.get(question=question)
+        email =[str(data.asked_to.user.email)]
+        context = {
+            'title':'You have a new quesiton to be answered',
+            'send_by':data.question.asked_by.username,
+            'send_to':data.asked_to.department_name,
+            'subject':data.question.subject,
+            'type':data.question.type,
+            'question':data.question.text,
+        }
+        send_email(email=email,content=context)
+        email_new = [str(data.question.asked_by.email)]
+        context_new = {
+            'title': 'Your question is addressed by the GS',
+            'send_by': data.question.asked_by.username,
+            'send_to': data.asked_to.department_name,
+            'subject': data.question.subject,
+            'type': data.question.type,
+            'question': data.question.text,
+        }
+        send_email(email=email_new, content=context_new)
+
+    else:
+        email = [str(data.question.asked_by.email)]
+        context = {
+            'title': 'Your quesiton is not admissable in the parliament ',
+            'send_by': data.asked_to.department_name,
+            'send_to': data.question.asked_by,
+            'subject': data.question.subject,
+            'type': data.question.type,
+            'question': data.question.text,
+        }
+        send_email(email=email, content=context)
+
+
     question.save()
 
     messages.success(request, "Thank you for your time , The question is send to the respective ministry!")
 
     return HttpResponseRedirect(reverse('cs_dashboard'))
+
+
+def send_email(email,content=None):
+    html_content=render_to_string('portal/emailtemplate.html',{'content':content})
+    print(content)
+    text_content=strip_tags(html_content)
+    print(text_content)
+    subject="reminder"
+    email_to=email
+    email_from=settings.EMAIL_HOST_USER
+    msg=EmailMultiAlternatives(subject,text_content,email_from,email_to)
+    msg.send()
+
